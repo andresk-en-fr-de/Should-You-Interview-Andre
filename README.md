@@ -1,4 +1,4 @@
-# 🤖 HR React Quiz App – "Should You Interview Andrej?"
+# HR React Quiz App – "Should You Interview Andrej?"
 
 A fun and insightful quiz app built with React to help HR professionals reflect on what truly matters in a developer — creativity, communication, and smart problem-solving.
 
