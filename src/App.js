@@ -1,86 +1,96 @@
-import React, { useState } from "react";
+import "./styles.css";
+import { useState } from "react";
 
 const questions = [
   {
-    text: "What kind of developer are you hiring?",
+    text: "Akého vývojára chcete zamestnať?",
     options: [
-      "🧍 A quiet typer who waits for Jira tickets",
-      "🎤 A communicator who can code, present, and interpret human languages",
+      "🧍 Tichého písača, ktorý čaká na úlohy z Jiry",
+      "🎤 Komunikátora, ktorý vie kódovať, prezentovať a rozumie ľudskej reči",
     ],
     correct:
-      "🎤 A communicator who can code, present, and interpret human languages",
+      "🎤 Komunikátora, ktorý vie kódovať, prezentovať a rozumie ľudskej reči",
   },
   {
-    text: "How should your dev approach repetitive work?",
+    text: "Ako by mal vývojár pristupovať k opakovanej práci?",
     options: [
-      "⛓️ Manual grind – typing till the keyboard melts",
-      "🤖 Automate boring stuff, save energy for UX fireworks 🎆⚡",
+      "⛓️ Manuálny grind – písanie kódu až do zhorenia klávesnice",
+      "Automatizovať repetitívne veci 🤖, šetriť energiu na UX ohňostroje 🎆⚡",
     ],
     correct:
-      "🤖 Automate boring stuff, save energy for UX fireworks 🎆⚡",
+      "Automatizovať repetitívne veci 🤖, šetriť energiu na UX ohňostroje 🎆⚡",
   },
   {
-    text: "What’s your view on Copilot-like tools?",
+    text: "Aký je Váš postoj k nástrojom ako AI?",
     options: [
-      "🧠 They’re cheating! Real devs type everything.",
-      "🚀 Smart tools = smart devs. Let the machine do its thing.",
-    ],
-    correct: "🚀 Smart tools = smart devs. Let the machine do its thing.",
-  },
-  {
-    text: "Do you prefer someone who...",
-    options: [
-      "🧱 Stays in one place and one mindset",
-      "🌍 Has seen the world, speaks many languages (both spoken and coded)",
+      "Všetko musí uchádzač vedieť napísať ručne (bez googlenia, Stack Overflow, copilota).",
+      "🚀 Smart nástroje = Smart developeri. Ak deliverujú, tak deliverujú - to je podstatné.",
     ],
     correct:
-      "🌍 Has seen the world, speaks many languages (both spoken and coded)",
+      "🚀 Smart nástroje = Smart developeri. Ak deliverujú, tak deliverujú - to je podstatné.",
   },
   {
-    text: "What’s your vibe when interviewing devs?",
+    text: "Preferuješ niekoho, kto...",
     options: [
-      "🧮 Just show me algorithms and LeetCode scores",
-      "🎆⚡ Show me problem-solving skills and resourcefulness",
+      "🧱 Zostáva na jednom mieste a v jednom mindsete",
+      "🌍 Precestoval kus sveta, hovorí mnohými jazykmi (hovorenými aj programovacími)",
     ],
-    correct: "🎆⚡ Show me problem-solving skills and resourcefulness",
+    correct:
+      "🌍 Precestoval kus sveta, hovorí mnohými jazykmi (hovorenými aj programovacími)",
+  },
+  {
+    text: "Aký máš prístup k pohovorom vývojárov?",
+    options: [
+      "🧮 Ukáž mi len algoritmy a LeetCode skóre",
+      "🎆⚡ Ukáž mi schopnosti riešiť problémy a vynaliezavosť",
+    ],
+    correct:
+      "🎆⚡ Ukáž mi schopnosti riešiť problémy a vynaliezavosť",
   },
 ];
 
 export default function App() {
-  const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);
+  const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
   if (finished) {
+    const finalScore = score;
     let message = "";
+
     if (score === questions.length) {
-      message = "✅ Ok. You should definitely reach out to Andrej!";
+      message =
+        "✅ Pravdepodobne by ste si mali naplánovať rozhovor s Andrejom hneď teraz!";
     } else if (score >= 3) {
       message =
-        "📅 Maybe a short online interview? Andrej wears shoes even for Zoom!";
+        "📅 Možno len online pohovor! (Andrej môže byť úplne formálne oblečený – aj topánky 😉)";
     } else {
-      message = "❌ Seems like not the right fit... or is he?";
+      message = "❌ Vyzerá v pohode, ale ešte to zvážim.";
     }
 
     return (
       <div className="App">
-        <h2>🎯 Quiz Complete!</h2>
-        <p>
-          You got <b>{score}</b> out of <b>{questions.length}</b>
-        </p>
-        <p>{message}</p>
-        <p className="thank-you">Thank you for answering the quiz 😊</p>
-        <button
-          onClick={() => {
-            setCurrent(0);
-            setSelected(null);
-            setScore(0);
-            setFinished(false);
-          }}
-        >
-          🔄 Restart Quiz
-        </button>
+        <div className="final-screen">
+          <h2>🎯 Kvíz dokončený!</h2>
+          <p className="score-line">
+            Vyzerá to, že vy a Andrej ste sa zhodli na <b>{score}</b> z{" "}
+            <b>{questions.length}</b> náročných otázok
+          </p>
+
+          <p className="final-message">{message}</p>
+          <button
+            onClick={() => {
+              setCurrent(0);
+              setSelected(null);
+              setScore(0);
+              setFinished(false);
+            }}
+          >
+            🔄 Spustiť kvíz znova
+          </button>
+        </div>
+        <p className="thank-you">Ďakujem za vyplnenie kvízu 😊</p>
       </div>
     );
   }
@@ -89,6 +99,24 @@ export default function App() {
     <div className="App">
       <h2>{questions[current].text}</h2>
       <ul>
+        <div style={{ marginTop: "1rem" }}>
+          <button
+            onClick={() => setCurrent(current - 1)}
+            disabled={current === 0}
+          >
+            ⬅️ Predchádzajúca
+          </button>
+          <button
+            onClick={() => {
+              setSelected(null);
+              setCurrent(current + 1);
+            }}
+            disabled={current === questions.length - 1}
+          >
+            Ďalej ➡️
+          </button>
+        </div>
+
         {questions[current].options.map((opt, i) => (
           <li
             key={i}
@@ -100,19 +128,18 @@ export default function App() {
                 : ""
             }`}
             onClick={() => {
-              setSelected(opt);
-              if (opt === questions[current].correct) {
-                setScore(score + 1);
-              }
+              const isCorrect = opt === questions[current].correct;
+              const newScore = isCorrect ? score + 1 : score;
 
-              setTimeout(() => {
-                if (current === questions.length - 1) {
-                  setFinished(true);
-                } else {
-                  setSelected(null);
-                  setCurrent(current + 1);
-                }
-              }, 500);
+              if (current === questions.length - 1) {
+                setScore(newScore);
+                setSelected(opt);
+                setTimeout(() => setFinished(true), 0);
+              } else {
+                setScore(newScore);
+                setSelected(null);
+                setCurrent(current + 1);
+              }
             }}
           >
             {opt}
