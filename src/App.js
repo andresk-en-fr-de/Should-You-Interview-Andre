@@ -21,7 +21,7 @@ const questions = [
       "Automatizovať repetitívne veci 🤖, šetriť energiu na UX ohňostroje 🎆⚡",
   },
   {
-    text: "Aký je Váš postoj k nástrojom ako AI?",
+    text: "Aký je váš postoj k nástrojom ako AI?",
     options: [
       "Všetko musí uchádzač vedieť napísať ručne (bez googlenia, Stack Overflow, copilota).",
       "🚀 Smart nástroje = Smart developeri. Ak deliverujú, tak deliverujú - to je podstatné.",
@@ -30,7 +30,7 @@ const questions = [
       "🚀 Smart nástroje = Smart developeri. Ak deliverujú, tak deliverujú - to je podstatné.",
   },
   {
-    text: "Preferuješ niekoho, kto...",
+    text: "Preferujete niekoho, kto...",
     options: [
       "🧱 Zostáva na jednom mieste a v jednom mindsete",
       "🌍 Precestoval kus sveta, hovorí mnohými jazykmi (hovorenými aj programovacími)",
@@ -39,7 +39,7 @@ const questions = [
       "🌍 Precestoval kus sveta, hovorí mnohými jazykmi (hovorenými aj programovacími)",
   },
   {
-    text: "Aký máš prístup k pohovorom vývojárov?",
+    text: "Aký sú vaše vibes počas pohovoru?",
     options: [
       "🧮 Ukáž mi len algoritmy a LeetCode skóre",
       "🎆⚡ Ukáž mi schopnosti riešiť problémy a vynaliezavosť",
