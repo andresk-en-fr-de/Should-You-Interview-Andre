@@ -1,4 +1,4 @@
-# 🧠 HR React Kvíz – „Čo Andrej a pohovor?“
+# 💡 HR React Kvíz – „Čo Andrej a pohovor?“
 
 Zábavná a zároveň podnetná kvízová aplikácia postavená v Reacte, ktorá pomáha HR profesionálom zamyslieť sa nad tým, čo je v skutočnosti dôležité pri výbere developera — kreativita, komunikácia a inteligentné riešenie problémov.
 
