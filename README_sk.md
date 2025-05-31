@@ -43,22 +43,6 @@ Zároveň slúži ako súčasť portfólia — dôkaz nielen toho, že viem kód
 - Možnosť reštartovať kvíz  
 - Jednoduchá štruktúra pripravená na nasadenie (kompatibilná s Create React App)
 
----
-
-Jasné. Tu máš upravený úsek README s pridaným linkom na živú aplikáciu:
-
-
----
-
-🚀 Živá ukážka
-
-👉 https://reactbased-quizz-for-hr.netlify.app
-
-
----
-
-A ak chceš rovno celý aktualizovaný blok s návrhom na zakončenie README, môžeš použiť:
-
 ## 🧪 Lokálne spustenie
 
 ```bash
