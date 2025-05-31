@@ -45,10 +45,32 @@ Zároveň slúži ako súčasť portfólia — dôkaz nielen toho, že viem kód
 
 ---
 
+Jasné. Tu máš upravený úsek README s pridaným linkom na živú aplikáciu:
+
+
+---
+
+🚀 Živá ukážka
+
+👉 https://reactbased-quizz-for-hr.netlify.app
+
+
+---
+
+A ak chceš rovno celý aktualizovaný blok s návrhom na zakončenie README, môžeš použiť:
+
 ## 🧪 Lokálne spustenie
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/hr-react-quiz.git
-cd hr-react-quiz
+git clone https://github.com/andresk-en-fr-de/Should-You-Interview-Andre.git
+cd Should-You-Interview-Andre
 npm install
 npm start
+
+
+---
+
+📬 Kontakt
+
+Ak vás projekt zaujal, pokojne ma kontaktujte alebo si pozrite ďalšie veci na mojom GitHub profile:
+🔗 https://github.com/andresk-en-fr-de
