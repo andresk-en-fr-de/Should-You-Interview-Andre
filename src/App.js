@@ -3,49 +3,46 @@ import { useState } from "react";
 
 const questions = [
   {
-    text: "Akého vývojára chcete zamestnať?",
+    text: "What kind of developer are you hiring?",
     options: [
-      "🧍 Tichého písača, ktorý čaká na úlohy z Jiry",
-      "🎤 Komunikátora, ktorý vie kódovať, prezentovať a rozumie ľudskej reči",
+      "🧍 A quiet typer who waits for Jira tickets",
+      "🎤 A communicator who can code, present, and interpret human languages",
     ],
     correct:
-      "🎤 Komunikátora, ktorý vie kódovať, prezentovať a rozumie ľudskej reči",
+      "🎤 A communicator who can code, present, and interpret human languages",
   },
   {
-    text: "Ako by mal vývojár pristupovať k opakovanej práci?",
+    text: "How should your dev approach repetitive work?",
     options: [
-      "⛓️ Manuálny grind – písanie kódu až do zhorenia klávesnice",
-      "Automatizovať repetitívne veci 🤖, šetriť energiu na UX ohňostroje 🎆⚡",
+      "⛓️ Manual grind – typing till the keyboard melts",
+      "🤖 Automate boring stuff, save energy for UX fireworks 🎆⚡",
     ],
-    correct:
-      "Automatizovať repetitívne veci 🤖, šetriť energiu na UX ohňostroje 🎆⚡",
+    correct: "🤖 Automate boring stuff, save energy for UX fireworks 🎆⚡",
   },
   {
-    text: "Aký je váš postoj k nástrojom ako AI?",
+    text: "What’s your view on Copilot-like tools?",
     options: [
-      "Všetko musí uchádzač vedieť napísať ručne (bez googlenia, Stack Overflow, copilota).",
-      "🚀 Smart nástroje = Smart developeri. Ak deliverujú, tak deliverujú - to je podstatné.",
+      "🧠 They’re cheating! Real devs type everything.",
+      "🚀 Smart tools = smart devs. Let the machine do its thing.",
     ],
-    correct:
-      "🚀 Smart nástroje = Smart developeri. Ak deliverujú, tak deliverujú - to je podstatné.",
+    correct: "🚀 Smart tools = smart devs. Let the machine do its thing.",
   },
   {
-    text: "Preferujete niekoho, kto...",
+    text: "Do you prefer someone who...",
     options: [
-      "🧱 Zostáva na jednom mieste a v jednom mindsete",
-      "🌍 Precestoval kus sveta, hovorí mnohými jazykmi (hovorenými aj programovacími)",
+      "🧱 Stays in one place and one mindset",
+      "🌍 Has seen the world, speaks many languages (both spoken and coded)",
     ],
     correct:
-      "🌍 Precestoval kus sveta, hovorí mnohými jazykmi (hovorenými aj programovacími)",
+      "🌍 Has seen the world, speaks many languages (both spoken and coded)",
   },
   {
-    text: "Aký sú vaše vibes počas pohovoru?",
+    text: "What’s your vibe when interviewing devs?",
     options: [
-      "🧮 Ukáž mi len algoritmy a LeetCode skóre",
-      "🎆⚡ Ukáž mi schopnosti riešiť problémy a vynaliezavosť",
+      "🧮 Just show me algorithms and LeetCode scores",
+      "🎆⚡ Show me problem-solving skills and resourcefulness",
     ],
-    correct:
-      "🎆⚡ Ukáž mi schopnosti riešiť problémy a vynaliezavosť",
+    correct: "🎆⚡ Show me problem-solving skills and resourcefulness",
   },
 ];
 
@@ -54,28 +51,27 @@ export default function App() {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-
   if (finished) {
     const finalScore = score;
     let message = "";
 
     if (score === questions.length) {
       message =
-        "✅ Pravdepodobne by ste si mali naplánovať rozhovor s Andrejom hneď teraz!";
+        "✅ Ok. You should probably schedule some time to reach him right now!";
     } else if (score >= 3) {
       message =
-        "📅 Možno len online pohovor! (Andrej môže byť úplne formálne oblečený – aj topánky 😉)";
+        "📅 Ok. Maybe just online interview! (Andrej can be fully formally dressed! - Shoes included 😉)";
     } else {
-      message = "❌ Vyzerá v pohode, ale ešte to zvážim.";
+      message = "❌ Seems cool, but I will think about it";
     }
 
     return (
       <div className="App">
         <div className="final-screen">
-          <h2>🎯 Kvíz dokončený!</h2>
+          <h2>🎯 Quiz Complete!</h2>
           <p className="score-line">
-            Vyzerá to, že vy a Andrej ste sa zhodli na <b>{score}</b> z{" "}
-            <b>{questions.length}</b> náročných otázok
+            Looks like you and Andrej agreed on <b>{score}</b> out of{" "}
+            <b>{questions.length}</b> tough questions
           </p>
 
           <p className="final-message">{message}</p>
@@ -87,16 +83,17 @@ export default function App() {
               setFinished(false);
             }}
           >
-            🔄 Spustiť kvíz znova
+            🔄 Restart Quiz
           </button>
         </div>
-        <p className="thank-you">Ďakujem za vyplnenie kvízu 😊</p>
+        <p className="thank-you">Thank you for answering the quiz 😊</p>
       </div>
     );
   }
 
   return (
     <div className="App">
+      {" "}
       <h2>{questions[current].text}</h2>
       <ul>
         <div style={{ marginTop: "1rem" }}>
@@ -104,7 +101,7 @@ export default function App() {
             onClick={() => setCurrent(current - 1)}
             disabled={current === 0}
           >
-            ⬅️ Predchádzajúca
+            ⬅️ Previous
           </button>
           <button
             onClick={() => {
@@ -113,7 +110,7 @@ export default function App() {
             }}
             disabled={current === questions.length - 1}
           >
-            Ďalej ➡️
+            Next ➡️
           </button>
         </div>
 
@@ -134,6 +131,7 @@ export default function App() {
               if (current === questions.length - 1) {
                 setScore(newScore);
                 setSelected(opt);
+                // Delay finishing just one tick to ensure score updates
                 setTimeout(() => setFinished(true), 0);
               } else {
                 setScore(newScore);
