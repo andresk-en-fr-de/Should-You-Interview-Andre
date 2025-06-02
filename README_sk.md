@@ -21,7 +21,7 @@ Zároveň slúži ako súčasť portfólia — dôkaz nielen toho, že viem kód
 
 ## 🚀 Živá ukážka
 
-👉 https://5phrcc.csb.app/
+👉 [https://5phrcc.csb.app/](https://reactbased-quizz-for-hr.netlify.app/)
 
 ---
 
