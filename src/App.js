@@ -198,13 +198,11 @@ return (
 
 <p className="final-message">{message}</p>
 <button
-onClick={() => {
-@@ -83,55 +149,73 @@ export default function App() {
-setFinished(false);
-}}
+  onClick={() => {
+    setFinished(false);
+  }}
 >
-            🔄 Restart Quiz
-            🔄 {lang === "sk" ? "Spustiť znova" : "Restart Quiz"}
+  🔄 {lang === "sk" ? "Spustiť znova" : "Restart Quiz"}
 </button>
 </div>
         <p className="thank-you">Thank you for answering the quiz 😊</p>
