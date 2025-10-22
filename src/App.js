@@ -1,57 +1,12 @@
 import "./styles.css";
 import { useState } from "react";
 
-const questions = [
-  {
-    text: "What kind of developer are you hiring?",
-    options: [
-      "🧍 A quiet typer who waits for Jira tickets",
-      "🎤 A communicator who can code, present, and interpret human languages",
-    ],
-    correct:
-      "🎤 A communicator who can code, present, and interpret human languages",
-  },
-  {
-    text: "How should your dev approach repetitive work?",
-    options: [
-      "⛓️ Manual grind – typing till the keyboard melts",
-      "🤖 Automate boring stuff, save energy for UX fireworks 🎆⚡",
-    ],
-    correct: "🤖 Automate boring stuff, save energy for UX fireworks 🎆⚡",
-  },
-  {
-    text: "What’s your view on Copilot-like tools?",
-    options: [
-      "🧠 They’re cheating! Real devs type everything.",
-      "🚀 Smart tools = smart devs. Let the machine do its thing.",
-    ],
-    correct: "🚀 Smart tools = smart devs. Let the machine do its thing.",
-  },
-  {
-    text: "Do you prefer someone who...",
-    options: [
-      "🧱 Stays in one place and one mindset",
-      "🌍 Has seen the world, speaks many languages (both spoken and coded)",
-    ],
-    correct:
-      "🌍 Has seen the world, speaks many languages (both spoken and coded)",
-  },
-  {
-    text: "What’s your vibe when interviewing devs?",
-    options: [
-      "🧮 Just show me algorithms and LeetCode scores",
-      "🎆⚡ Show me problem-solving skills and resourcefulness",
-    ],
-    correct: "🎆⚡ Show me problem-solving skills and resourcefulness",
-  },
-];
-
 export default function App() {
   const [lang, setLang] = useState("en");
-const [selected, setSelected] = useState(null);
-const [current, setCurrent] = useState(0);
-const [score, setScore] = useState(0);
-const [finished, setFinished] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [current, setCurrent] = useState(0);
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
 
   const questionsEN = [
     {
@@ -150,28 +105,18 @@ const [finished, setFinished] = useState(false);
 
   const activeQuestions = lang === "sk" ? questionsSK : questionsEN;
 
-if (finished) {
-const finalScore = score;
-let message = "";
-
-    if (score === questions.length) {
-      message =
-        "✅ Ok. You should probably schedule some time to reach him right now!";
-    } else if (score >= 3) {
-      message =
-        "📅 Ok. Maybe just online interview! (Andrej can be fully formally dressed! - Shoes included 😉)";
+  if (finished) {
+    let message = "";
     if (lang === "sk") {
       if (score === activeQuestions.length) {
         message =
           "✅ Super! Asi by ste sa mali porozprávať s Andrejom hneď teraz!";
       } else if (score >= 3) {
-        message =
-          "📅 Možno by stačil online pohovor – Andrej sa aj obuje 😉";
+        message = "📅 Možno by stačil online pohovor – Andrej sa aj obuje 😉";
       } else {
         message = "❌ Vyzerá to zaujímavo, ale ešte si to premyslím.";
       }
-} else {
-      message = "❌ Seems cool, but I will think about it";
+    } else {
       if (score === activeQuestions.length) {
         message =
           "✅ Ok. You should probably schedule some time to reach him right now!";
@@ -179,108 +124,89 @@ let message = "";
         message =
           "📅 Ok. Maybe just online interview! (Andrej can be fully formally dressed! - Shoes included 😉)";
       } else {
-        message = "❌ Seems cool, but I will think about it";
+        message = "❌ Seems cool, but I will think about it.";
       }
-}
+    }
 
-return (
-<div className="App">
-<div className="final-screen">
-          <h2>🎯 Quiz Complete!</h2>
+    return (
+      <div className="App">
+        <div className="final-screen">
           <h2>{lang === "sk" ? "🎯 Kvíz dokončený!" : "🎯 Quiz Complete!"}</h2>
-<p className="score-line">
-            Looks like you and Andrej agreed on <b>{score}</b> out of{" "}
-            <b>{questions.length}</b> tough questions
+          <p className="score-line">
             {lang === "sk"
               ? <>Zhodli ste sa v <b>{score}</b> z <b>{activeQuestions.length}</b> otázok</>
               : <>Looks like you and Andrej agreed on <b>{score}</b> out of <b>{activeQuestions.length}</b> tough questions</>}
-</p>
+          </p>
 
-<p className="final-message">{message}</p>
-<button
-  onClick={() => {
-    setFinished(false);
-  }}
->
-  🔄 {lang === "sk" ? "Spustiť znova" : "Restart Quiz"}
-</button>
-</div>
-        <p className="thank-you">Thank you for answering the quiz 😊</p>
+          <p className="final-message">{message}</p>
+          <button onClick={() => setFinished(false)}>
+            🔄 {lang === "sk" ? "Spustiť znova" : "Restart Quiz"}
+          </button>
+        </div>
         <p className="thank-you">
           {lang === "sk"
             ? "Ďakujeme, že ste si urobili čas na tento kvíz 😊"
             : "Thank you for answering the quiz 😊"}
         </p>
-</div>
-);
-}
+      </div>
+    );
+  }
 
-return (
-<div className="App">
-      {" "}
-      <h2>{questions[current].text}</h2>
+  return (
+    <div className="App">
       <div style={{ textAlign: "right", marginBottom: "1rem" }}>
-        <button
-          onClick={() => setLang("sk")}
-          disabled={lang === "sk"}
-        >
+        <button onClick={() => setLang("sk")} disabled={lang === "sk"}>
           🇸🇰 Slovensky
         </button>
-        <button
-          onClick={() => setLang("en")}
-          disabled={lang === "en"}
-        >
+        <button onClick={() => setLang("en")} disabled={lang === "en"}>
           English 🇬🇧
         </button>
       </div>
 
       <h2>{activeQuestions[current].text}</h2>
 
-<ul>
-<div style={{ marginTop: "1rem" }}>
-<button
-onClick={() => setCurrent(current - 1)}
-disabled={current === 0}
->
-            ⬅️ Previous
-            ⬅️ {lang === "sk" ? "Predchádzajúca" : "Previous"}
-</button>
-<button
-onClick={() => {
-setSelected(null);
-setCurrent(current + 1);
-}}
-            disabled={current === questions.length - 1}
-            disabled={current === activeQuestions.length - 1}
->
-            Next ➡️
-            {lang === "sk" ? "Ďalšia" : "Next"} ➡️
-</button>
-</div>
-
-        {questions[current].options.map((opt, i) => (
+      <ul>
         {activeQuestions[current].options.map((opt, i) => (
-<li
-key={i}
-className={`answer-option ${
-             selected === opt
-                ? opt === questions[current].correct
+          <li
+            key={i}
+            className={`answer-option ${
+              selected === opt
                 ? opt === activeQuestions[current].correct
-                 ? "correct"
-                 : "wrong"
-               : ""
-           }`}
-onClick={() => {
-              const isCorrect = opt === questions[current].correct;
+                  ? "correct"
+                  : "wrong"
+                : ""
+            }`}
+            onClick={() => {
               const isCorrect = opt === activeQuestions[current].correct;
-const newScore = isCorrect ? score + 1 : score;
+              const newScore = isCorrect ? score + 1 : score;
+              setScore(newScore);
+              setSelected(opt);
 
-              if (current === questions.length - 1) {
               if (current === activeQuestions.length - 1) {
-setScore(newScore);
-setSelected(opt);
-                // Delay finishing just one tick to ensure score updates
-setTimeout(() => setFinished(true), 0);
-} else {
-setScore(newScore);
->
+                setTimeout(() => setFinished(true), 0);
+              }
+            }}
+          >
+            {opt}
+          </li>
+        ))}
+      </ul>
+
+      <div style={{ marginTop: "1rem" }}>
+        <button onClick={() => setCurrent(current - 1)} disabled={current === 0}>
+          ⬅️ {lang === "sk" ? "Predchádzajúca" : "Previous"}
+        </button>
+
+        <button
+          onClick={() => {
+            setSelected(null);
+            setCurrent(current + 1);
+          }}
+          disabled={current === activeQuestions.length - 1}
+        >
+          {lang === "sk" ? "Ďalšia" : "Next"} ➡️
+        </button>
+      </div>
+    </div>
+  );
+}
