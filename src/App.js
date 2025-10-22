@@ -283,3 +283,4 @@ setSelected(opt);
 setTimeout(() => setFinished(true), 0);
 } else {
 setScore(newScore);
+>
