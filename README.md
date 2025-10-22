@@ -20,7 +20,7 @@ It's also a portfolio piece — proving not only the ability to code, but to thi
 
 ## 🚀 Live Demo
 
-👉 [Click here to try the quiz]https://reactbased-quizz-for-hr.netlify.app/
+👉 the link https://68f8f918dcf0ee0008835918--should-you-interview-andre.netlify.app/
 
 ---
 
